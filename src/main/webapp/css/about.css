@@ -1,0 +1,60 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+	font-family:'lato' san sarif;
+	color:black;
+
+}
+
+
+
+
+
+
+
+.about .heading
+{
+	font-size: 50px;
+	color: black;
+}
+.about  .heading span
+{
+	font-weight: 700;
+	color: black;
+}
+.about  .What-we-can-do
+{
+	text-align: justify;
+	color: black;
+}
+
+.about_card .r51 .c51 .card{
+	
+	background-color:white;
+	padding: 20px 0px;
+	margin-top: 20px;
+	
+
+}
+.about_card .r51 .c51 .card i.card-icon{
+	
+color:#0B9EE2;
+font-size: 60px;
+	
+
+}
+.about_card .r51 .c51 .card .card-body .card-text
+{
+	font-weight: 700;
+	font-size: 15px;
+	color: black;
+}
+
+.about_card .r51 .c51 .card .card-body  p
+{
+	color: black;
+}
+
+
+

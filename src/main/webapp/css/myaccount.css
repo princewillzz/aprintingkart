@@ -1,0 +1,106 @@
+
+.saanvi-help
+{
+  padding: 0px 0px;
+}
+.saanvi-help .saanvi-support .saanvi-help-support hr
+{
+  border-top:3px solid seagreen;
+  width:100px;
+  margin: 0px;
+}
+
+	
+
+.saanvi-customer .saanvi-customer-detail hr
+{
+  border-top:3px solid seagreen;
+  width:100px;
+  margin: 0px;
+}
+
+.saanvi-customer-detail h3
+{
+margin-top: 0px;
+}
+ .saanvi-customer .saanvi-cust-pic
+{
+  background-color: rgb(255, 195, 0);
+  padding: 12px;
+  text-align: right;
+  border-radius: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+ .saanvi-customer .saanvi-cust-pic img
+{
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  left: -1px;
+  top: -10px;
+  border-radius: 85px;
+}
+ .saanvi-customer .saanvi-cust-detail
+{
+ 
+
+  background-color:#FEFDFC    ;
+  margin: 2px;
+
+transition: all .3s linear;
+
+
+}
+.saanvi-customer .saanvi-cust-detail:hover
+{
+   -webkit-box-shadow: -2px 3px 10px 0px rgba(179,177,179,1);
+-moz-box-shadow: -2px 3px 10px 0px rgba(179,177,179,1);
+box-shadow: -2px 3px 10px 0px rgba(179,177,179,1);
+transform: scale(1.02);
+}
+ .saanvi-customer .saanvi-cust-detail ul li
+ {
+  
+  float: left;
+  list-style-position: outside;
+  margin-top: 0px;
+  list-style: none;
+  margin-right: 20px;
+
+ }
+  .saanvi-customer .saanvi-cust-detail label
+  {
+    margin-left: 75px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    text-transform: uppercase;
+    font-size: 10px;
+    padding: 0px;
+  }
+  .saanvi-customer .saanvi-cust-detail .cust-pro-detail
+  {
+    position: relative;
+    left: 0;
+    top: -5px;
+  }
+   .saanvi-customer .saanvi-cust-detail .cust-pro-detail .pro-icon ,.saanvi-customer .saanvi-cust-detail .cust-pro-detail .edit-icon
+   {
+    color: rgb(255, 195, 0)
+   }
+ .saanvi-customer .saanvi-cust-detail .cust-pro-detail .edit
+ {
+  float:right;
+cursor:default;
+ }
+  .saanvi-customer .saanvi-cust-detail .cust-pro-detail .edit-icon
+ {
+  float:right;
+  cursor: pointer;
+ }
+ .saanvi-customer .saanvi-cust-detail .cust-pro-detail .sv
+ {
+  float:right;
+  cursor: pointer;
+  padding: 0px 5px;
+ }

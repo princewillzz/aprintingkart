@@ -1,0 +1,33 @@
+.banner {
+  
+  height: 300px;
+ background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+ 
+}
+#caption ul
+{
+	margin-left: 20px;
+}
+
+#caption ul li
+{
+	float: left;
+	padding: 0px 15px;
+	list-style: none;
+	border-right: 1px solid white;
+
+}
+
+#caption ul li a
+{
+	color: white;
+	transition: all .3s linear;
+}
+#caption ul li a:hover
+{
+	color:rgba(0,0,0,.3);
+	text-decoration: none;
+}
+

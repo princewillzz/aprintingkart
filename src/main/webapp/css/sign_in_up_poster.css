@@ -1,0 +1,54 @@
+
+.otp
+{
+	margin-top: 30px;
+}
+
+ .otp .otp-poster
+  {
+    height:90vh;
+    background-color: background: #7C3DD4;
+background: -webkit-radial-gradient(center, #7C3DD4, #E9E1E2);
+background: -moz-radial-gradient(center, #7C3DD4, #E9E1E2);
+background: radial-gradient(ellipse at center, #7C3DD4, #E9E1E2);;
+clip-path: polygon(0 0, 91% 0, 100% 100%, 0% 100%);border-radius: 0px 0px 130px 0px;
+
+  }
+
+.company-title-table
+{
+   
+    position:absolute;
+
+    top:30%;
+    left:10%;
+}
+.company-title-table th:nth-child(1)
+{
+  color: #F7E45C;
+  font-weight: 700;
+  font-size:100px;
+}
+.company-title-table th:nth-child(2)
+{
+  color: white;
+  
+  font-size:100px;
+}
+ .company-title-table .apk
+{
+  color:#F7F4F4 ;
+  font-weight: 600;
+  font-size: 40px;
+}
+ .company-title-table .apk span
+{
+  color:#F7E45C ;
+
+}
+
+ .company-title-table .enterprise
+ {
+color:#F7F4F4 ;
+font-size: 18px;
+ }

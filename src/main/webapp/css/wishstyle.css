@@ -1,0 +1,234 @@
+  
+
+.wishlist
+{
+	margin-top: 50px;
+}
+   .wishlist .wish table tr  th,.wishlist .wish table tr  td,.wishlist .wish table tr td .pro_name_text
+     {
+     color: black;
+    }
+  
+  .wishlist .wish table thead tr  th
+    {
+      vertical-align: middle;
+    }
+
+     .wishlist .wish table  tr  th
+    {
+      font-size: 14px;
+    }
+
+    .wishlist .wish table tbody  tr td
+    {
+      vertical-align: middle;
+    }
+        .wishlist .wish table tbody  tr td input
+    {
+      background-color: white;
+      border:none;
+      color: darkred;
+      font-weight: 700;
+    }
+    .wishlist .wish table tbody  tr .instock
+    {
+    	color:darkblue;
+    }
+
+  .wishlist .wish table tbody  tr .product_image_name img
+  {
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+  }
+    .wishlist .wish table tbody  tr .product_image_name {
+   font-size: 14px;
+  }
+.wishlist .wish table tbody  tr .close_button a i
+{
+  color: darkred;
+}
+.wishlist .wish table tbody  tr .cart_button button .cart_icon i
+{
+  margin-right: 10px;
+}
+.wishlist .wish table tbody  tr .cart_button button .cart_text
+{
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+
+
+
+@media (min-width: 1200px) {
+
+.wishlist .wish table tbody  tr .cart_button button .cart_icon i
+{
+ 	display: inline-block;
+}
+.wishlist .wish table tbody  tr .cart_button button .cart_text
+{
+	display:inline-block;
+}
+
+ 
+
+
+}
+
+/* Medium screen : 992px. */
+
+@media only screen and (min-width: 992px) and (max-width: 1199px)
+ {
+
+		.wishlist .wish table tbody  tr .cart_button button .cart_icon i
+		{
+ 			display: inline-block;
+		}
+		.wishlist .wish table tbody  tr .cart_button button .cart_text
+		{
+			display:inline-block;
+		}
+
+}
+
+/* Tablet :768px. */
+
+@media only screen and (min-width: 800px) and (max-width: 991px)
+ {
+		.wishlist .wish table tbody  tr .cart_button button .cart_icon i
+		{
+ 			display: inline-block;
+		}
+		.wishlist .wish table tbody  tr .cart_button button .cart_text
+		{
+			display:inline-block;
+		}
+ }
+
+
+
+
+/* Large Mobile :480px. */
+
+@media only screen and (min-width: 767px) and (max-width: 799px) 
+{
+	.wishlist .wish table tbody  tr .cart_button button .cart_icon i
+		{
+ 			display: inline-block;
+		}
+		.wishlist .wish table tbody  tr .cart_button button .cart_text
+		{
+			display:inline-block;
+			
+		}
+}
+
+  
+
+/* Medium Mobile :480px. */
+
+@media only screen and (min-width: 576px) and (max-width: 766px)
+ {
+
+   .wishlist .wish table tbody  tr .cart_button button .cart_icon i
+	{
+	 	display: block;
+	 	font-size: 14px;
+	 	padding: 0px;
+	}
+	.wishlist .wish table tbody  tr .cart_button button .cart_text
+	{
+		display: none;
+	}
+	 .wishlist .wish table tbody  tr .instock
+    {
+    	color:darkblue;
+    	font-size: 14px;
+    }
+      .wishlist .wish table tbody  tr .product_image_name img
+  {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+  }
+  .wishlist .wish table tbody  tr .product_image_name  .pro_name_text
+  {
+  	font-size: 13px;
+  }
+     .wishlist .wish table  tr  th
+    {
+      font-size: 10px;
+    }
+}
+
+/* Small Mobile :320px. */
+
+@media only screen and (min-width: 479px) and (max-width: 576px)
+{
+
+ .wishlist .wish table tbody  tr .cart_button button .cart_icon i
+	{
+	 	display: block;
+	 	font-size: 14px;
+	 	padding: 0px;
+	}
+	.wishlist .wish table tbody  tr .cart_button button .cart_text
+	{
+		display: none;
+	}
+	 .wishlist .wish table tbody  tr .instock
+    {
+    	color:darkblue;
+    	font-size: 14px;
+    }
+      .wishlist .wish table tbody  tr .product_image_name img
+  {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+  }
+  .wishlist .wish table tbody  tr .product_image_name  .pro_name_text
+  {
+  	font-size: 13px;
+  }
+     .wishlist .wish table  tr  th
+    {
+      font-size: 10px;
+    }
+    
+}
+
+@media only screen and (max-width: 478px)
+{
+ .wishlist .wish table tbody  tr .cart_button button .cart_icon i
+	{
+	 	display: block;
+	 	font-size: 14px;
+	 	padding: 0px;
+	}
+	.wishlist .wish table tbody  tr .cart_button button .cart_text
+	{
+		display: none;
+	}
+	 .wishlist .wish table tbody  tr .instock
+    {
+    	color:darkblue;
+    	font-size: 14px;
+    }
+      .wishlist .wish table tbody  tr .product_image_name img
+  {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+  }
+  .wishlist .wish table tbody  tr .product_image_name  .pro_name_text
+  {
+  	font-size: 13px;
+  }
+     .wishlist .wish table  tr  th
+    {
+      font-size: 10px;
+    }
+}

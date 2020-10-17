@@ -1,0 +1,39 @@
+.content .add-product .add-product-form .add-product-form-content
+{
+padding: 30px 70px 30px 40px;
+  background-color: #EFEEF1;
+}
+.content .add-product .add-product-form .add-product-form-content input[type="text"],.content .add-product .add-product-form .add-product-form-content textarea
+{
+  background-color: #D0CFD1;
+}
+.content .add-product .add-product-form .add-product-form-content label
+{
+  color:#09024B;
+
+}
+.content .add-product .add-product-form .add-product-form-content h6
+{
+  font-weight: 600;
+  color:#09024B;
+}
+@media screen and (max-width: 780px){
+  
+
+  .content{
+    margin-left: 0;
+    margin-top: 0;
+    padding: 10px 20px;
+    transition: 0s;
+  }
+
+  #check:checked ~ .content{
+    margin-left: 0;
+  }
+
+  
+
+
+}
+                    
+

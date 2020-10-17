@@ -1,0 +1,63 @@
+
+*
+{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.banner {
+  
+  height: 400px;
+  background-image: url('');
+  background-position: top right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #FCF7F6 ;
+ 
+}
+.banner1,.banner2 {
+  
+  height: 400px;
+  
+  background-position: top right;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  
+  margin-top: 30px; 
+}
+.banner1
+{
+  border-right: 15px solid white;
+}
+.banner2
+{
+  border-left: 15px solid white;
+}
+.banner1 .banner-caption
+{
+  position: absolute;
+  z-index: 2;
+  
+
+
+}
+.banner1 .banner-caption a
+
+{
+
+  position: absolute;
+  left: 40%;
+  top: 40%;
+  color: white;
+  font-weight:700;
+  font-size: 30px;
+
+
+}
+.banner1 .banner-caption a:hover
+{
+  color:rgba(0,0,0,.2);
+  text-decoration: none;
+}

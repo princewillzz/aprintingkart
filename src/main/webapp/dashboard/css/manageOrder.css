@@ -1,0 +1,55 @@
+
+
+.content .product-manager .product-manager-heading h1{
+float: left;
+}
+.content .product-manager .product-manager-heading ul
+{
+float: left;
+
+}
+
+.content .product-manager .product-manager-heading ul li
+{
+  float: left;
+  list-style: none;
+  margin-right: 10px;
+margin-bottom: 10px;
+}
+.content .product-manager .product-manager-heading ul li button
+{
+
+background-color: #E1E0D9;
+    padding: 9px 0px;
+    width: 150px;
+    color: #09024B;
+    border: none;
+    transition: all .3s linear;
+    font-weight: 550;
+
+}
+.content .product-manager .product-manager-heading ul li button:hover
+{
+  color:white;
+  background-color: #09024B;
+}
+/* Responsive CSS */
+
+@media screen and (max-width: 780px){
+  
+
+  .content{
+    margin-left: 0;
+    margin-top: 0;
+    
+    transition: 0s;
+  }
+
+  #check:checked ~ .content{
+    margin-left: 0;
+  }
+
+  
+
+
+}

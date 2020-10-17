@@ -1,0 +1,86 @@
+.accordion {
+
+
+  padding: 15px 20px;
+ -webkit-box-shadow: -1px 1px 12px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: -1px 1px 12px 0px rgba(0,0,0,0.75);
+box-shadow: -1px 1px 12px 0px rgba(0,0,0,0.75);
+
+}
+
+.accordion:hover{
+  cursor: pointer;
+}
+
+/* Main accordion title 
+========================================================================== */
+.accordion h5{
+  display: inline;
+  font-weight: 100;
+}
+
+/* Main accordion arrow 
+========================================================================== */
+.accordion button{
+  float: right;
+  font-size: 20px;
+  background-color: transparent;
+  border-style: none;
+  padding: 0;
+  margin: 0;
+  	position: relative;
+  	top: -20px;
+  
+  outline: none;
+}
+
+
+/* Accordion dropdown panel
+========================================================================== */
+.accordion-panel{
+  margin: 0 auto;
+  padding: 10px 15px;
+  min-width: 80%;
+  max-width: 85%;
+  border-width: 2px;
+  background-color: #fafafad4;
+  border-color: #e3e3e3;
+  border-style: solid;
+  border-top: none;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+/* Rotate class for dropdown button
+========================================================================== */
+
+.rotate {
+    -moz-transition: all .5s linear;
+    -webkit-transition: all .5s linear;
+    transition: all .5s linear;
+}
+
+.rotate.up {
+    -moz-transform:rotate(180deg);
+    -webkit-transform:rotate(180deg);
+    transform:rotate(180deg);
+}
+
+@media screen and (max-width: 780px){
+  
+
+  .content{
+    margin-left: 0;
+    margin-top: 0;
+    padding: 10px 20px;
+    transition: 0s;
+  }
+
+  #check:checked ~ .content{
+    margin-left: 0;
+  }
+
+  
+
+
+}

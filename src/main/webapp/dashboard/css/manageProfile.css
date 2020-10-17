@@ -1,0 +1,102 @@
+
+.apk-manage-profile-detail h3
+{
+margin-top: 0px;
+
+}
+
+
+ .apk-manage-profile .apk-profile-detail
+{
+ 
+
+  background-color:#FEFDFC    ;
+  margin: 2px;
+
+transition: all .3s linear;
+padding: 14px 0px;
+
+
+}
+.apk-manage-profile .apk-profile-detail:hover
+{
+   -webkit-box-shadow: -2px 3px 10px 0px rgba(179,177,179,1);
+-moz-box-shadow: -2px 3px 10px 0px rgba(179,177,179,1);
+box-shadow: -2px 3px 10px 0px rgba(179,177,179,1);
+transform: scale(1.02);
+}
+ .apk-manage-profile .apk-profile-detail ul li
+ {
+  
+  float: left;
+  list-style-position: outside;
+  margin-top: 0px;
+  list-style: none;
+  margin-right: 20px;
+  font-size: 14px;
+
+ }
+  .apk-manage-profile .apk-profile-detail label
+  {
+    margin-left: 75px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    text-transform: uppercase;
+    font-size: 10px;
+    padding: 0px;
+  }
+  .apk-manage-profile .apk-profile-detail .cust-pro-detail
+  {
+    position: relative;
+    left: 0;
+    top: -5px;
+  }
+   .apk-manage-profile .apk-profile-detail .cust-pro-detail .pro-icon ,.apk-manage-profile .apk-profile-detail .cust-pro-detail .edit-icon
+   {
+    color: #09024B;
+   }
+ .apk-manage-profile .apk-profile-detail .cust-pro-detail .edit
+ {
+  float:right;
+cursor:default;
+ }
+  .apk-manage-profile .apk-profile-detail .cust-pro-detail .edit-icon
+ {
+  float:right;
+  cursor: pointer;
+ }
+ .apk-manage-profile .apk-profile-detail .cust-pro-detail .sv
+ {
+  float:right;
+  cursor: pointer;
+  padding: 0px 5px;
+ }
+                    
+@media screen and (max-width: 780px){
+  
+
+  .content{
+    margin-left: 0;
+    margin-top: 0;
+    
+    transition: 0s;
+  }
+
+  #check:checked ~ .content{
+    margin-left: 0;
+  }
+
+  
+ .apk-manage-profile .apk-profile-detail ul li
+ {
+  
+
+  font-size: 12px;
+
+ }
+ .apk-manage-profile .apk-profile-detail label
+ {
+  font-size: 8px;
+ }
+
+}

@@ -1,0 +1,82 @@
+@media screen and (max-width: 780px){
+  
+
+  .content{
+    margin-left: 0;
+    margin-top: 0;
+    padding: 10px 20px;
+    transition: 0s;
+  }
+
+  #check:checked ~ .content{
+    margin-left: 0;
+  }
+
+  .main .manage_product h1
+{
+  font-size: 25px;
+}
+.main .row  .product_name table tbody td,.main .row .product_categories table tbody td
+{
+  font-size: 10px;
+}
+.main .row  .product_name table thead th,.main .row .product_categories table thead th
+{
+  font-size: 13px;
+
+}
+}
+.main .manage_product h1
+{
+  color:#09024B;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.main .row  .product_name table tbody td,.main .row .product_categories table tbody td
+{
+  font-size: 12px;
+  color: #09024B;
+  padding: 5px 5px;
+  font-weight: 600;
+  text-shadow: 0px 2px 2px rgba(150, 150, 150, 1);
+
+
+}
+.main .row  .product_name table tbody td button i,.main .row .product_categories table tbody td button i
+{
+  font-size: 10px;
+
+
+}
+.main .row  .product_name table tbody td button,.main .row .product_categories table tbody td button
+{
+  padding: 0px;
+  padding: 0px 8px 1px 8px;
+  border-radius: 30px;
+  background-color: #09024B;
+  border: none;
+  transition: all .3s linear;
+
+}
+.main .row  .product_name table tbody td button:hover,.main .row .product_categories table tbody td button:hover
+{
+
+  background-color:red;
+
+
+}
+.main .row  .product_name .add_new_product_button button,.main .row  .product_categories .add_new_category_button button
+{
+  background-color: #09024B;
+  color: white;
+  margin: 25px 0px;
+}
+  .main .row  .product_name .add_new_product_button button:hover,.main .row  .product_categories .add_new_category_button button:hover
+{
+  background-color:white ;
+  color: #09024B;
+  border: 1px solid #09024B;
+  -webkit-box-shadow: -1px 2px 17px -2px rgba(0,0,0,0.75);
+-moz-box-shadow: -1px 2px 17px -2px rgba(0,0,0,0.75);
+box-shadow: -1px 2px 17px -2px rgba(0,0,0,0.75);
+}  

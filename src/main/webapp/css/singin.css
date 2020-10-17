@@ -1,0 +1,32 @@
+.dont-have-acc
+{
+
+
+  border-radius: 40px;
+  margin-top: 30px;
+  
+}
+.dont-have-acc a
+{
+  color: rgba(0,0,0,.5);
+  margin: 0px;
+}
+ .dont-have-acc a:hover
+{
+  color: rgba(0,0,0,.9);
+  text-decoration: none;
+}
+.dont-have-acc .signup
+{
+
+margin-left: 7px;
+padding: 3px 8px;
+color:#F93E9F ;
+font-size: 14px;
+font-weight: 600;
+
+}
+.dont-have-acc .signup:hover
+{
+  color: #FA1F90 
+}

@@ -1,0 +1,209 @@
+
+@media (min-width: 1200px) {
+
+
+.otp .otp-page .otp-content
+  {
+    -webkit-box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    padding-bottom: 20px;
+    max-width: 350px;
+    align-items: center;
+   margin-left: 10%;
+  }
+ 
+
+
+}
+
+/* Medium screen : 992px. */
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+
+.otp .otp-page .otp-content
+  {
+    -webkit-box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    padding-bottom: 20px;
+    max-width:  350px;
+    align-items: center;
+  margin-left: 10%;
+  }
+
+}
+
+/* Tablet :768px. */
+
+@media only screen and (min-width: 800px) and (max-width: 991px) {
+
+       .otp .otp-page .otp-content
+  {
+    -webkit-box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    padding-bottom: 20px;
+    max-width: 320px;
+   margin-left: 25%;
+  }
+
+}
+
+
+/* Large Mobile :480px. */
+
+@media only screen and (min-width: 767px) and (max-width: 799px) {
+
+    .otp .otp-poster
+     {
+      display: none
+     }  
+     .otp .otp-page .otp-content
+  {
+    -webkit-box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    padding-bottom: 20px;
+    max-width: 320px;
+   margin-left: 25%;
+  }
+
+    footer .container-fluid .foot .foot-content ul li a
+  {
+  text-align: center
+  }
+  footer .container-fluid .foot .foot-content ul li
+  {
+    text-align: center;
+  }
+
+   body
+      {
+        background-color: white;
+      }
+}
+
+/* Medium Mobile :480px. */
+
+@media only screen and (min-width: 576px) and (max-width: 766px) {
+
+  
+ .otp .otp-poster
+     {
+      display: none
+     }
+.otp .otp-page .otp-content
+  {
+    -webkit-box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    padding-bottom: 20px;
+    max-width: 320px;
+    align-items: center;
+    margin-left: 20%;
+  }
+    footer .container-fluid .foot .foot-content ul li a
+  {
+  text-align: center
+  }
+  footer .container-fluid .foot .foot-content ul li
+  {
+    text-align: center;
+  }
+    .trending .trend .pro-detail  a.atc
+{
+
+  margin-bottom: 20px;
+}
+
+ body
+      {
+        background-color: white;
+      }
+
+}
+
+/* Small Mobile :320px. */
+
+@media only screen and (min-width: 479px) and (max-width: 576px){
+
+     .otp .otp-poster
+     {
+      display: none
+     }
+.otp .otp-page .otp-content
+  {
+    -webkit-box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    padding-bottom: 20px;
+    max-width: 400px;
+    align-items: center;
+   
+  }
+    form input
+  {
+    height: 34px;
+    width:34px;
+  }
+    footer .container-fluid .foot .foot-content ul li a
+  {
+  text-align: center
+  }
+  footer .container-fluid .foot .foot-content ul li
+  {
+    text-align: center;
+  }
+    .trending .trend .pro-detail  a.atc
+{
+
+  margin-bottom: 20px;
+}
+
+   body
+      {
+        background-color: white;
+      }
+}
+
+@media only screen and (max-width: 478px)
+{
+  .otp .otp-poster
+     {
+      display: none
+     }
+.otp .otp-page .otp-content
+  {
+    -webkit-box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
+    padding-bottom: 20px;
+    max-width: 350px;
+    align-items: center;
+   
+  }
+  form input
+  {
+    height: 34px;
+    width:34px;
+  }
+  footer .container-fluid .foot .foot-content ul li a
+  {
+  text-align: center
+  }
+  footer .container-fluid .foot .foot-content ul li
+  {
+    text-align: center;
+  }
+  .trending .trend .pro-detail  a.atc
+{
+
+  margin-bottom: 20px;
+}
+   body
+      {
+        background-color: white;
+      }
+}
