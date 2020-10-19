@@ -8,7 +8,7 @@ public class ImageStorageProperties {
     /**
      * Folder location for storing files
      */
-    private String location = "D:/coding/test";
+    private String location = "C:/dev/projects/Aprinting/aprintingkart/src/main/resources/image";
 
     public String getLocation() {
         return location;

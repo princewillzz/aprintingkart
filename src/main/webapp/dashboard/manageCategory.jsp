@@ -1,3 +1,5 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
 <!DOCTYPE html>
 
 <html>
@@ -24,19 +26,19 @@
 
     <style type="text/css">
 
-#viewImagesList table tr th,.productFilterable  table tr th input,.productFilterable  table tr td ,#viewImagesList table tr td
+#categoryViewDetails table tr th,.filterable  table tr th input,.filterable  table tr td ,#categoryViewDetails table tr td
 {
   text-align: center;
   vertical-align: middle;
 }
 
-#viewImagesList table tr th h6
+#categoryViewDetails table tr th h6
 {
 
 font-size: 13px; 
 }
 
-#viewImagesList table tr:nth-child( odd )
+#categoryViewDetails table tr:nth-child( odd )
 {
  background: rgba(226,226,226,1);
 background: -moz-linear-gradient(left, rgba(226,226,226,1) 0%, rgba(209,209,209,1) 1%, rgba(133,128,133,1) 51%, rgba(254,254,254,1) 100%);
@@ -50,7 +52,7 @@ color:white;
 text-align: center;
  
 }
-#viewImagesList table tr:nth-child( even )
+#categoryViewDetails table tr:nth-child( even )
 {
 background-color: #A09EA2  ;
 color:white;
@@ -66,9 +68,9 @@ text-align: center;
 <body>
     <div class="container">
         <div class="row">
-            <div class="panel panel-primary productFilterable table-responsive">
+            <div class="panel panel-primary filterable table-responsive">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Product List</h3>
+                    <h3 class="panel-title">Category List</h3>
                     <div class="pull-right" style="position: relative;
 top: -20px;"><button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span>
                             Filter</button></div>
@@ -77,49 +79,45 @@ top: -20px;"><button class="btn btn-default btn-xs btn-filter"><span class="glyp
                     <thead>
                         <tr class="filters">
                             <th><input type="text" class="form-control" placeholder="Id" disabled></th>
-                            <th><input type="text" class="form-control" placeholder=" Product Name" disabled></th>
-                            <th><input type="text" class="form-control" placeholder=" Product Price" disabled></th>
-                            <th><input type="text" class="form-control" placeholder=" Product Discount" disabled></th>
+                            <th><input type="text" class="form-control" placeholder=" Category Name" disabled></th>
+                            <th><input type="text" class="form-control" placeholder="Sub Category List" disabled></th>
                             <th><input type="text" class="form-control" placeholder="Description" disabled></th>
-                               <th><input type="text" class="form-control" placeholder="Product Demo" disabled></th>
-
-                            <th><input type="text" class="form-control" placeholder="Edit On Images" disabled></th>
-                            
-                         
+                            <th><input type="text" class="form-control" placeholder="Category Image" disabled></th>
                             
                             <th colspan="2" style="text-align: center;"><a class="btn btn-success"
-                                    href="Product">Add
-                                    Product</a></th>
+                                    href="category">Add
+                                    Category</a></th>
                         </tr>
                     </thead>
                     <tbody>
                       
-                        <tr>
-                            <td id="productId">101</td>
-                            <td id="productName">canvera</td>
-                            <td id="productPrice"><i class="fa fa-inr">234</i></td>
-                            <td id="productDiscount">20<i class="fa fa-percent"></i></td>
-                            <td id="productDescription">what is this</td>
-                            <td id="productDemoImage"><img src="images/icon.png" style="height: 100px;width: 100px;">
-                                 <div class="file btn  btn-file edit-demo-image" style="overflow: hidden;position: relative;background-color: #09024B;color: white;display:none;">
-                                Edit Image
-                                 <input type="file" id="" name="" style="position: absolute;font-size: 50px;opacity: 0;      right: 0;top: 0;">
-                                 </div>
-                            </td>
-                            <td><a type="button" href="" id="linkListOfImages"  data-toggle="modal" data-target="#viewImagesList" onclick="productId_of_viewImagesList(1)">View List Of Image</a></td>
-                           
-                           <td class=""> <a href="#" class="btn btn-success saveProduct " style="display: none;"
-                                    onclick="saveProductFunction(1)">Save</a>
-                                <button class="btn btn-warning editProduct">Edit</button></td>
-                            <td><a class="btn btn-danger deleteProduct">Delete</a></td>
-                        </tr>
+                        
+                        <c:forEach items="${categories}" var="category">
+                            <tr>
+                                <td id="categoryId">${category.id}</td>
+                                <td id="categoryName">${category.name}</td>
+
+                                <td><a type="button" href="" id="linkSubCategory"  data-toggle="modal" data-target="#categoryViewDetails" onclick="viewSubCategoryList('${category.id}')">View Sub Category</a></td>
+                                <td id="categoryDescription">${category.content}</td>
+                                <td id="categoryPhoto"><img src="images/icon.png" style="height: 100px;width: 100px;">
+                                    <div class="file btn  btn-file category-image" style="overflow: hidden;position: relative;background-color: #09024B;color: white;display:none;">
+                                        Edit Image
+                                        <input type="file" id="" name="" style="position: absolute;font-size: 50px;opacity: 0;right: 0;top: 0;">
+                                    </div>
+                                </td>
+
+                                <td class=""> <a href="#" class="btn btn-success saveCategory " style="display: none;" onclick="saveCategoryFunction(1)">Save</a><button class="btn btn-warning editCategory">Edit</button></td>
+                                <td><a class="btn btn-danger deleteCategory">Delete</a></td>
+
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
-    <div class="modal" id="viewImagesList">
+    <div class="modal" id="categoryViewDetails">
       <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -149,7 +147,7 @@ top: -20px;"><button class="btn btn-default btn-xs btn-filter"><span class="glyp
                 <td id="subCategoryDescription">Doe</td>
                 <td id="subCategoryImage"><img src="images/icon.png" style="height: 100px;width: 100px;">
 
-  <div class="file btn  btn-file" style="overflow: hidden;position: relative;background-color: #09024B;color: white;">
+<div class="file btn  btn-file" style="overflow: hidden;position: relative;background-color: #09024B;color: white;">  
                         Edit Image
                       <input type="file" id="" name="" style="position: absolute;font-size: 50px;opacity: 0;right: 0;top: 0;">
                     </div>
@@ -175,17 +173,17 @@ top: -20px;"><button class="btn btn-default btn-xs btn-filter"><span class="glyp
     <script type="text/javascript">
 
 
-        // Delete Product
-        $('.table tbody tr td').on('click', '.deleteProduct', function () {
+        // Delete Branch
+        $('.table tbody tr td').on('click', '.deleteCategory', function () {
             $(this).parent().parent().remove();
             event.preventDefault();
             const content = $(this).parent().prevAll().toArray();
             const data = {};
             content.forEach(item => {
-                if (item.id === "productId") {
+                if (item.id === "categoryId") {
                     data["id"] = item.innerText;
                 }
-                if (item.id === "productName") {
+                if (item.id === "categoryName") {
                     data["name"] = item.innerText;
                 }
             })
@@ -213,16 +211,13 @@ top: -20px;"><button class="btn btn-default btn-xs btn-filter"><span class="glyp
 
 
         // Editable 
-        $('.table tbody tr td').on('click', '.editProduct', function () {
+        $('.table tbody tr td').on('click', '.editCategory', function () {
 
             $(this).hide();
             $(this).siblings().show();
-            $(this).parent().siblings("#productName").attr("contenteditable", "true").focus();
-            $(this).parent().siblings("#productDescription").attr("contenteditable", "true").focus();
-            $(this).parent().siblings("#productPrice").attr("contenteditable", "true").focus();
-            $(this).parent().siblings("#productDiscount").attr("contenteditable", "true").focus();
-              $(this).parent().siblings("#productDemoImage").children(".edit-demo-image").show();
-           
+            $(this).parent().siblings("#categoryName").attr("contenteditable", "true").focus();
+            $(this).parent().siblings("#categoryDescription").attr("contenteditable", "true").focus();
+            $(this).parent().siblings("#categoryPhoto").children(".category-image").show();
 
         });
 
@@ -231,38 +226,38 @@ top: -20px;"><button class="btn btn-default btn-xs btn-filter"><span class="glyp
 
         // Save Edits
 
-        $('.table tbody tr td').on('click', '.saveProduct', function () {
+        $('.table tbody tr td').on('click', '.saveCategory', function () {
 
             $(this).hide();
-            $(this).siblings('.editProduct').show();
+            $(this).siblings('.editCategory').show();
+            $(this).parent().siblings("#categoryPhoto").children(".category-image").hide();
             $(this).parent().siblings("").attr("contenteditable", "false");
-             $(this).parent().siblings("#productDemoImage").children(".edit-demo-image").hide();
 
         });
 
 
 
-        // $('.table tbody tr td').on('click', '.deleteProduct', function () {
+        // $('.table tbody tr td').on('click', '.deleteCategory', function () {
 
         //     $(this).closest('tr').remove();
 
         // });
 
 
-        $('.table tbody tr td').on('click', '.u-icon', function () {
+       /* $('.table tbody tr td').on('click', '.u-icon', function () {
 
             $(this).hide();
             $(this).siblings().show();
             $(this).parent().parent().prevAll().children('td').attr("contenteditable", "true").focus().css({ "background-color": "#eeeeee", "width": "200px" });
 
-        });
+        });*/
 
         //view Branch Address
 
-        function addrLink(id) {
-            $('#branchAddress #hidden_address_id').val(id);
+       // function addrLink(id) {
+            //$('#branchAddress #hidden_address_id').val(id);
 
-            console.log("Address");
+            //console.log("Address");
             // $.Post("url", { id: id }, function (data, status) {
 
             //     var addr = JSON.parse(data);
@@ -276,33 +271,29 @@ top: -20px;"><button class="btn btn-default btn-xs btn-filter"><span class="glyp
             //     $('#state').text().css("text-tranform", "capitalize");
 
             // })
-        }
+       // }
 
    
   
         //show association details
-        function productId_of_viewImagesList(id) {
-            $('#adminDetails #hidden_admin_id').val(id);
-            console.log("Admin");
-            // var url = "";
-            // $.Post("url", { id: id }, function (data, status) {
+        function viewSubCategoryList(id) {
+            
+            console.log(id);
 
-            //     $('#adminDetails #Name').text("kundan").css("text-tranform", "capitalize");
-            //     $('#adminDetails #Branch').text("upper Kulti").css("text-tranform", "capitalize");
-            //     $('#adminDetails #contact').text().css("text-tranform", "capitalize");
-            //     $('#adminDetails #email').text().css("text-tranform", "capitalize");
-            //     $('#adminDetails #salary').text().css("text-tranform", "capitalize");
-            //     $('#adminDetails #jd').text().css("text-tranform", "capitalize");
-
-            // });
+            const URI = "http://localhost:8080/api/sub-categories/" + id;
+            fetch(URL)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
 
         }
 
-        //save Product
-        function saveProductFunction(id) {
-            var productId = id;
-            var productName = $("table tbody tr td#productName").text();
-            console.log(productName);
+        //save Branch
+        function saveCategoryFunction(id) {
+            var categoryId = id;
+            var categoryName = $("table tbody tr td#categoryName").text();
+            console.log(categoryName);
 
         }
 
@@ -320,10 +311,10 @@ top: -20px;"><button class="btn btn-default btn-xs btn-filter"><span class="glyp
             const content = $(this).parent().prevAll().toArray();
             const data = {};
             content.forEach(item => {
-                if (item.id === "productId") {
+                if (item.id === "categoryId") {
                     data["id"] = item.innerText;
                 }
-                if (item.id === "productName") {
+                if (item.id === "categoryName") {
                     data["name"] = item.innerText;
                 }
                 if (item.id === "branchContact") {
@@ -381,10 +372,10 @@ top: -20px;"><button class="btn btn-default btn-xs btn-filter"><span class="glyp
             const content = $(this).parent().prevAll().toArray();
             const data = {};
             content.forEach(item => {
-                if (item.id === "productId") {
+                if (item.id === "categoryId") {
                     data["id"] = item.innerText;
                 }
-                if (item.id === "productName") {
+                if (item.id === "categoryName") {
                     data["name"] = item.innerText;
                 }
                 if (item.id === "branchContact") {

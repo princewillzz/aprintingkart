@@ -1,7 +1,6 @@
 package com.aprinting.aprintingkart.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.aprinting.aprintingkart.models.Category;
 

@@ -55,7 +55,9 @@
             <div class="cards">
               <div class="card__item">
                 <div class="card__header">
-                  <img src="images/trend3.jpg" style="height: 200px; width: 220px;object-fit: contain;">
+                  <img src="https://www.w3schools.com/images/w3schools_green.jpg"
+                    style="height: 200px; width: 220px;object-fit: contain;">
+
                   <span id="new">hot</span>
                   <span id="perc">10%</span>
 

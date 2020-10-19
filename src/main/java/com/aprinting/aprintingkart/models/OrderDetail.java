@@ -1,7 +1,9 @@
 package com.aprinting.aprintingkart.models;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +17,9 @@ public class OrderDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Date orderTime;
+    @Column(columnDefinition = "timestamp default now()")
+    private Timestamp createdAt;
+
     private Date deliveryDate;
     private Boolean paymentStatus;
     private Double amount;
@@ -35,14 +39,6 @@ public class OrderDetail {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Date getOrderTime() {
-        return orderTime;
-    }
-
-    public void setOrderTime(Date orderTime) {
-        this.orderTime = orderTime;
     }
 
     public Date getDeliveryDate() {
@@ -101,11 +97,19 @@ public class OrderDetail {
         this.customer = customer;
     }
 
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
     @Override
     public String toString() {
-        return "OrderDetail [amount=" + amount + ", customer=" + customer + ", deliveryDate=" + deliveryDate
-                + ", discount=" + discount + ", id=" + id + ", orderTime=" + orderTime + ", paymentStatus="
-                + paymentStatus + ", product=" + product + ", quantity=" + quantity + "]";
+        return "OrderDetail [amount=" + amount + ", createdAt=" + createdAt + ", deliveryDate=" + deliveryDate
+                + ", discount=" + discount + ", id=" + id + ", paymentStatus=" + paymentStatus + ", quantity="
+                + quantity + "]";
     }
 
 }

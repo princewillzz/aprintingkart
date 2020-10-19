@@ -33,8 +33,12 @@
     <div class="content">
 
 
+
+
+
+
         <!-- Category Form -->
-        <form action="/dashboard/category" method="POST" enctype="multipart/form-data">
+        <form action="/dashboard/add-category" method="POST" enctype="multipart/form-data">
             <div class="container add-product">
                 <div class="row add-product-form" style="">
                     <div class="col-12 col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 add-product-form-content">
@@ -79,7 +83,7 @@
         </form>
 
         <!-- Sub category form -->
-        <form style="margin: 20px 0px;" action="/dashboard/category" method="POST" enctype="multipart/form-data">
+        <form style="margin: 20px 0px;" action="/dashboard/add-category" method="POST" enctype="multipart/form-data">
             <div class="container add-product">
                 <div class="row add-product-form" style="">
                     <div class="col-12 col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 add-product-form-content">
@@ -139,10 +143,25 @@
     </div>
 
 
-    <script type="text/javascript">
 
+
+
+    <script>
+        window.addEventListener("load", (e) => {
+            var errorMsg = "${error}";
+
+            if (errorMsg !== null && errorMsg.length > 0) {
+                alert(errorMsg);
+            
+            }
+
+        }, false);
 
     </script>
+
+
+
+
 </body>
 
 </html>

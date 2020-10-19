@@ -43,10 +43,12 @@
     <a href="/dashboard" id="dashboardSidebarOption"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
     <a href="/dashboard/manage-order" id="manageOrderSidebarOption"><i class="fas fa-cogs"></i><span>Manage
             Order</span></a>
+    <a href="/dashboard/manage-category" id="manageCategorySidebarOption"><i class="fas fa-info-circle"></i><span>Manage Category</span></a>
     <a href="/dashboard/manage-product" id="manageProductSidebarOption"><i class="fas fa-table"></i><span>Manage
             Product</span></a>
     <a href="/dashboard/notification" id="notificationSidebarOption"><i
             class="fas fa-th"></i><span>Notification</span></a>
+    
     <a href="/dashboard/profile" id="profileSidebarOption"><i class="fas fa-info-circle"></i><span>Profile</span></a>
 </div>
 <!--sidebar end-->
@@ -69,6 +71,9 @@
             console.log("here");
         } else if (window.location.href == "http://localhost:8080/dashboard/profile") {
             document.getElementById("profileSidebarOption").style.background = "#19B3D3";
+            console.log("here");
+        } else if (window.location.href == "http://localhost:8080/dashboard/manage-category") {
+            document.getElementById("manageCategorySidebarOption").style.background = "#19B3D3";
             console.log("here");
         }
     });

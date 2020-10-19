@@ -1,3 +1,5 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
 <!DOCTYPE html>
 <html>
 
@@ -27,24 +29,28 @@
   <%@include file="adminHeader.jsp" %>
 
   <div class="content">
-    <form>
+    <form action="/dashboard/add-product" method="POST" enctype="multipart/form-data">
       <div class="container add-product">
-        <div class="row add-product-form" style="">
+        <div class="row add-product-form" >
           <div class="col-12 col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 add-product-form-content">
             <h6>ADD PRODUCT</h6>
 
             <div class="form-group">
               <label>Product Name</label>
-              <input type="text" class="form-control">
+              <input name="name" type="text" class="form-control">
             </div>
 
             <div class="form-group">
               <label for="comment">Comment:</label>
-              <textarea class="form-control" rows="5" id="comment"></textarea>
+              <textarea name="description" class="form-control" rows="5" id="comment"></textarea>
             </div>
             <div class="form-group">
               <label>Category</label>
-              <input type="text" class="form-control">
+              <select name="category" class="form-control">
+                <c:forEach items="${categories}" var="category">
+                    <option value="${category.id}">${category.name}</option>
+                </c:forEach>
+              </select>
             </div>
           </div>
           <div class="col-12 col-xs-12 col-sm-12 col-md-1 col-lg-1 col-xl-1 add-product-form-content"></div>
@@ -57,7 +63,8 @@
               <div class="file btn  btn-file"
                 style="overflow: hidden;position: relative;background-color: #09024B;color: white;">
                 Upload or edit image
-                <input type="file" name="" style="position: absolute;font-size: 50px;opacity: 0;right: 0;top: 0;">
+                <input type="file" name="productPhoto"
+                  style="position: absolute;font-size: 50px;opacity: 0;right: 0;top: 0;">
               </div>
             </div>
 
@@ -92,6 +99,18 @@
 
 
 
+  <script>
+    window.addEventListener("load", (e) => {
+        var errorMsg = "${error}";
+
+        if (errorMsg !== null && errorMsg.length > 0) {
+            alert(errorMsg);
+        
+        }
+
+    }, false);
+
+</script>
 
 
 
