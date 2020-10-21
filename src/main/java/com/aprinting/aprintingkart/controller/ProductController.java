@@ -31,6 +31,13 @@ public class ProductController {
         this.productService = productService;
     }
 
+    @GetMapping(value = "product-detail")
+    public ModelAndView getProductDetailView(@RequestParam("id") String id) {
+        ModelAndView modelAndView = new ModelAndView("product-view");
+
+        return modelAndView;
+    }
+
     @GetMapping(value = "dashboard/manage-product")
     public ModelAndView getManageProductView() {
         ModelAndView modelAndView = new ModelAndView("dashboard/manageProduct");

@@ -156,25 +156,34 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     @CacheEvict(value = { "categoriesWithSubCategories", "subCategories", "categories" }, allEntries = true)
-    public void updateCategory(Category category, MultipartFile photo) {
+    public void updateCategory(Category newCategoryData, MultipartFile photo) {
 
         try {
-            imageStorageService.store(photo);
 
-            Resource photoResource = imageStorageService
-                    .loadAsResource(StringUtils.cleanPath(photo.getOriginalFilename()));
+            Category category = categoryRepository.getOne(newCategoryData.getId());
 
-            String photoURI = photoResource.getURI().toString();
+            category.setName(newCategoryData.getName());
+            category.setContent(newCategoryData.getContent());
 
-            category.setPhoto(photoURI);
+            try {
+                imageStorageService.store(photo);
 
-            System.out.println(photoURI);
+                Resource photoResource = imageStorageService
+                        .loadAsResource(StringUtils.cleanPath(photo.getOriginalFilename()));
+
+                String photoURI = photoResource.getURI().toString();
+
+                category.setPhoto(photoURI);
+                System.out.println(photoURI);
+            } catch (Exception e) {
+                System.out.println("unable to update photo");
+            }
+
+            categoryRepository.save(category);
 
         } catch (Exception e) {
-            // TODO: handle exception
+            System.out.println("Unable to update category");
         }
-
-        categoryRepository.save(category);
 
     }
 

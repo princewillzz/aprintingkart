@@ -180,8 +180,10 @@
 							<!-- <li><a href="#" role="menuitem" tabindex="-1"></a></li> -->
 
 
-							<c:forEach begin="0" end="9" varStatus="loop" items="${categories}" var="category">
-								<li><a href="#" role="menuitem" tabindex="-1">${category.name}</a></li>
+							<c:forEach begin="0" end="9" varStatus="loop" items="${categoriesWithSubCategories}"
+								var="categoryWithSubCategories">
+								<li><a href="#" role="menuitem"
+										tabindex="-1">${categoryWithSubCategories.category.name}</a></li>
 							</c:forEach>
 
 
@@ -197,103 +199,25 @@
 
 			<!-- menu -->
 			<ul class="main-menu">
-				<!-- <li><a href="#">Phone Cover <i class="fa fa-angle-down"></i></a>
-					<ul class="sub-menu">
-						<li><a href="#">DESIGN YOUR CASE</a></li>
-						<li><a href="#">Xiaomi</a></li>
-						<li><a href="#">OnePlus</a></li>
-						<li><a href="#">Apple</a></li>
-						<li><a href="#">Vivo</a></li>
-						<li><a href="#">Samsung</a></li>
-						<li><a href="#">Lenovo</a></li>
-						<li><a href="#">Nokia</a></li>
-						<li><a href="#">Asus</a></li>
-						<li><a href="#">> View All Brands</a></li>
-					</ul>
-				</li>
-				<li><a href="#">Clothing <i class="fa fa-angle-down"></i></a>
-					<ul class="sub-menu">
-						<li><a href="#">T-Shirts</a></li>
-						<li><a href="#">Hoodies</a></li>
-						<li><a href="#">Sweatshirts</a></li>
-						<li><a href="#">Caps</a></li>
-						<li><a href="#">Wallets</a></li>
-						<li><a href="#">Bags</a></li>
-						<li><a href="#">Wrist Bands</a></li>
-					</ul>
-				</li>
-				<li><a href="#">Mugs & Sippers <i class="fa fa-angle-down"></i></a>
-					<ul class="sub-menu">
-						<li><a href="#">DESIGN YOUR OWN</a></li>
-						<li><a href="#">White Mugs</a></li>
-						<li><a href="#">Magic Mugs</a></li>
-						<li><a href="#">Blue Mugs</a></li>
-						<li><a href="#">Green Mugs</a></li>
-						<li><a href="#">Orange Mugs</a></li>
-						<li><a href="#">Red Mugs</a></li>
-						<li><a href="#">Transparent Mugs</a></li>
-						<li><a href="#">Sipper Bottles</a></li>
-						<li><a href="#">Shot Glasses</a></li>
-						<li><a href="#">Beer Mugs</a></li>
-						<li><a href="#">Coasters</a></li>
-						<li><a href="#">> View All Mugs</a></li>
-					</ul>
-				</li>
-				<li><a href="#">Home & Kitchen <i class="fa fa-angle-down"></i>
-						<span class="new">New</span>
-					</a>
-					<ul class="sub-menu">
-						<li><a href="#">DESIGN YOUR OWN</a></li>
-						<li><a href="#">Cushions</a></li>
-						<li><a href="#">Bed Sheets</a></li>
-						<li><a href="#">Fridge Photo Magnets</a></li>
-						<li><a href="#">Photo Canvas</a></li>
-						<li><a href="#">Clocks</a></li>
-						<li><a href="#">Keychains</a></li>
-						<li><a href="#">Photo Badges</a></li>
-						<li><a href="#">Posters</a></li>
-						<li><a href="#">Playing Cards</a></li>
-						<li><a href="#">Photo Frames</a></li>
-						<li><a href="#">Jigsaw Puzzles</a></li>
-						<li><a href="#">Coasters</a></li>
-						<li><a href="#">Dinner Plates</a></li>
-						<li><a href="#">Photo Calenders</a></li>
-					</ul>
-				</li>
-				<li><a href="#">Office & Stationery <i class="fa fa-angle-down"></i></a>
-					<ul class="sub-menu">
-						<li><a href="#">PERSONALIZED OFFICE PRODUCTS</a></li>
-						<li><a href="#">Visiting Cards</a></li>
-						<li><a href="#">Pen Drives</a></li>
-						<li><a href="#">Calenders</a></li>
-						<li><a href="#">Mousepads</a></li>
-						<li><a href="#">Self-Inking Stamps</a></li>
-						<li><a href="#">Presentation Folders</a></li>
-						<li><a href="#">Banner Standees</a></li>
-						<li><a href="#">PERSONALIZED STATIONERY</a></li>
-						<li><a href="#">Notebooks</a></li>
-						<li><a href="#">Diaries</a></li>
-						<li><a href="#">Pens</a></li>
-						<li><a href="#">Exam Boards</a></li>
-						<li><a href="#">Button Badges</a></li>
-						<li><a href="#">Geometry Box</a></li>
-					</ul>
-				</li>
-				<li><a href="#">Gifts <i class="fa fa-angle-down"></i></a>
-					<ul class="sub-menu">
-						<li><a href="#">OCCASIONS</a></li>
-						<li><a href="#">Anniversary</a></li>
-						<li><a href="#">Birthday</a></li>
-						<li><a href="#">Wedding</a></li>
-						<li><a href="#">Greeting Cards</a></li>
-					</ul>
-				</li>
-				<li><a href="#">Face Masks</a></li> -->
+				<c:forEach begin="0" end="11" varStatus="loop" items="${categoriesWithSubCategories}"
+					var="categoryWithSubCategories">
+					<li><a href="#">${categoryWithSubCategories.category.name} <i class="fa fa-angle-down"></i></a>
 
-
-				<c:forEach begin="0" end="9" varStatus="loop" items="${categories}" var="category">
-					<li><a href="#">${category.name}</a></li>
+						<ul class="sub-menu">
+							<c:forEach items="${categoryWithSubCategories.subCategories}" var="subCategory">
+								<li><a href="#">${subCategory.category.name}</a></li>
+							</c:forEach>
+						</ul>
+					</li>
 				</c:forEach>
+
+
+
+
+				<!--<li><a href="#">Face Masks</a></li> -->
+
+
+
 			</ul>
 		</div>
 	</nav>

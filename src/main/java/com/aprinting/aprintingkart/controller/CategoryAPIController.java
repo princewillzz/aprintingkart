@@ -1,12 +1,15 @@
 package com.aprinting.aprintingkart.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.aprinting.aprintingkart.models.Category;
 import com.aprinting.aprintingkart.service.CategoryService;
+import com.aprinting.aprintingkart.service.ProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,10 +26,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CategoryAPIController {
 
     private final CategoryService categoryService;
+    private final ProductService productService;
 
     @Autowired
-    protected CategoryAPIController(@Qualifier("categoryService") CategoryService categoryService) {
+    protected CategoryAPIController(@Qualifier("categoryService") CategoryService categoryService,
+            @Qualifier("productService") ProductService productService) {
         this.categoryService = categoryService;
+        this.productService = productService;
+    }
+
+    @GetMapping(value = "categories-or-products")
+    public ResponseEntity<?> getCategoriesOrProducts(@RequestParam String id) {
+
+        HashMap<String, List<?>> data = new HashMap<>(5);
+
+        try {
+            List<Category> subCategories = categoryService.getSubCategories(id);
+            data.put("subCategories", subCategories);
+
+            if (subCategories.size() <= 0) {
+                data.put("products", productService.getProducts(id));
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+
+        return ResponseEntity.ok().body(data);
     }
 
     @GetMapping(value = "sub-categories/{id}")

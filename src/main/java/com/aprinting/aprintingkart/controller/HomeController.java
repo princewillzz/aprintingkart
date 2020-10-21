@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.aprinting.aprintingkart.models.Category;
 import com.aprinting.aprintingkart.service.CategoryService;
+import com.aprinting.aprintingkart.utilies.CategoryAndSubCategory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,9 +28,9 @@ public class HomeController {
     public ModelAndView home(@RequestParam(defaultValue = "apk_home", name = "name") String name) {
         ModelAndView mv = new ModelAndView(name);
 
-        List<Category> categories = categoryService.getParentCategories();
+        List<CategoryAndSubCategory> categories = categoryService.getCategoryWithSubCategories();
 
-        mv.addObject("categories", categories);
+        mv.addObject("categoriesWithSubCategories", categories);
 
         return mv;
     }

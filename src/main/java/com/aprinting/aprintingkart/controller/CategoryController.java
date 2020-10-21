@@ -5,6 +5,7 @@ import java.util.List;
 import com.aprinting.aprintingkart.Exceptions.DuplicateFileException;
 import com.aprinting.aprintingkart.models.Category;
 import com.aprinting.aprintingkart.service.CategoryService;
+import com.aprinting.aprintingkart.service.ProductService;
 import com.aprinting.aprintingkart.utilies.CategoryAndSubCategory;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +26,14 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 public class CategoryController {
 
-    private CategoryService categoryService;
+    private final CategoryService categoryService;
+    private final ProductService productService;
 
     @Autowired
-    public CategoryController(@Qualifier("categoryService") CategoryService categoryService) {
+    public CategoryController(@Qualifier("categoryService") CategoryService categoryService,
+            @Qualifier("productService") ProductService productService) {
         this.categoryService = categoryService;
+        this.productService = productService;
 
     }
 
@@ -45,7 +49,7 @@ public class CategoryController {
     @GetMapping(value = "test")
     @ResponseBody
     public ResponseEntity<?> getTestData() {
-        return ResponseEntity.ok().body(categoryService.getCategories());
+        return ResponseEntity.ok().body(categoryService.getCategoryWithSubCategories());
     }
 
     @GetMapping(value = "test/{id}")
@@ -65,12 +69,10 @@ public class CategoryController {
 
         try {
             // Get all sub-categories data
-            List<Category> data = categoryService.getSubCategories(parentId);
-            if (data.size() > 0) {
-                modelAndView.addObject("data", data);
-            } else {
-                modelAndView.addObject("data", data);
-                // work to be done here
+            List<Category> subCategories = categoryService.getSubCategories(parentId);
+            modelAndView.addObject("subCategories", subCategories);
+            if (subCategories.size() <= 0) {
+                modelAndView.addObject("products", productService.getProducts(parentId));
             }
 
         } catch (Exception e) {

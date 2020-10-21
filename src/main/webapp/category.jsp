@@ -163,29 +163,57 @@
 
           <div class="row">
 
-            ${data}
+            <c:if test="${subCategories.size() > 0}">
+              <!-- Sub Categories list -->
+              <c:forEach items="${subCategories}" var="subCategory">
 
-            <div class="col-12 col-sm-12 col-xs-12 col-md-4 col-lg-4 col-xl-4">
-              <div class="cards">
-                <div class="card__item">
-                  <div class="card__header">
-                    <img src="images/trend3.jpg" style="height: 200px; width: 220px;object-fit: contain;">
-                    <span id="new">new</span>
-                    <span id="perc">10%</span>
+                <div class="col-12 col-sm-12 col-xs-12 col-md-4 col-lg-4 col-xl-4">
+                  <a href="sub-category?parentid=${subCategory.id}">
+                    <div class="cards">
+                      <div class="card__item">
+                        <div class="card__header">
+                          <img src="images/trend3.jpg" style="height: 200px; width: 220px;object-fit: contain;">
+                          <span id="new">new</span>
+                          <span id="perc">10%</span>
 
-
-                  </div>
-                  <div class="card__content">
-                    <h5 class="card__content-text" style="">Product Name</h5>
-                  </div>
-                  <div class="card__footer">
-                  </div>
+                        </div>
+                        <div class="card__content">
+                          <h5 class="card__content-text" style="">${subCategory.name}</h5>
+                        </div>
+                        <div class="card__footer">
+                        </div>
+                      </div>
+                    </div>
+                  </a>
                 </div>
-              </div>
-            </div>
 
+              </c:forEach>
+            </c:if>
 
+            <c:if test="${subCategories.size() <= 0}">
+              <!-- Prodcts List -->
+              <c:forEach items="${products}" var="product">
+                <div class="col-12 col-sm-12 col-xs-12 col-md-4 col-lg-4 col-xl-4">
+                  <a href="product-detail?id=${product.id}">
+                    <div class="cards">
+                      <div class="card__item">
+                        <div class="card__header">
+                          <img src="images/trend3.jpg" style="height: 200px; width: 220px;object-fit: contain;">
+                          <span id="new">new</span>
+                          <span id="perc">10%</span>
 
+                        </div>
+                        <div class="card__content">
+                          <h5 class="card__content-text" style="">${product.name}</h5>
+                        </div>
+                        <div class="card__footer">
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </c:forEach>
+            </c:if>
 
           </div>
 

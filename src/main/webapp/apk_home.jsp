@@ -46,12 +46,12 @@
       <!--loop-->
 
 
-      <c:forEach items="${categories}" var="category">
+      <c:forEach items="${categoriesWithSubCategories}" var="categoryWithSubCategories">
 
 
 
         <div class="col-12 col-md-3 col-lg-3 col-xl-3 ">
-          <a href="sub-category?parentid=${category.id}">
+          <a href="sub-category?parentid=${categoryWithSubCategories.category.id}">
             <div class="cards">
               <div class="card__item">
                 <div class="card__header">
@@ -63,7 +63,7 @@
 
                 </div>
                 <div class="card__content">
-                  <h5 class="card__content-text" style="">${category.name}</h5>
+                  <h5 class="card__content-text" style="">${categoryWithSubCategories.category.name}</h5>
                 </div>
                 <div class="card__footer">
                 </div>
