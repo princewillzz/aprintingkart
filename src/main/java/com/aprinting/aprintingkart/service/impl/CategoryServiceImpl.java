@@ -1,7 +1,12 @@
 package com.aprinting.aprintingkart.service.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.aprinting.aprintingkart.Exceptions.DuplicateFileException;
 import com.aprinting.aprintingkart.models.Category;
@@ -12,6 +17,8 @@ import com.aprinting.aprintingkart.utilies.CategoryAndSubCategory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -32,12 +39,21 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    @Cacheable("categories")
     public List<Category> getCategories() {
 
         return categoryRepository.findAll();
     }
 
     @Override
+    @Cacheable("categories")
+    public Category getCategory(String id) throws NumberFormatException, NoSuchElementException {
+
+        return (Category) categoryRepository.findById(Long.parseLong(id)).get();
+    }
+
+    @Override
+    @CacheEvict(value = { "categoriesWithSubCategories", "subCategories", "categories" }, allEntries = true)
     public void addCategories(Category category, MultipartFile photo) {
 
         if (containsName(category.getName())) {
@@ -74,27 +90,99 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    @Cacheable("categoriesWithSubCategories")
     public List<CategoryAndSubCategory> getCategoryWithSubCategories() {
 
-        final List<Category> categories = categoryRepository.findAll();
+        List<Category> categories = categoryRepository.findAll();
+        final List<Category> restCategories = new ArrayList<>(categories);
 
-        final List<CategoryAndSubCategory> categoryAndSubCategoriesList = new ArrayList<>();
+        // Get Level 1 categories
+        final List<CategoryAndSubCategory> categoryAndSubCategoriesList = categories.stream()
+                .filter(it -> it.getParent() == null).map(it -> {
+                    CategoryAndSubCategory item = new CategoryAndSubCategory();
+                    item.setCategory(it);
+                    restCategories.remove(it);
+                    return item;
+                }).collect(Collectors.toList());
 
-        for (int index = 0; index < categories.size(); index++) {
-            CategoryAndSubCategory categoryAndSub = new CategoryAndSubCategory();
-            categoryAndSub.setCategory(categories.get(index));
+        // Getting rest of the categories
+        // Looping untill no more categories needs to be associated with its parent
+        while (restCategories.size() > 0) {
 
-            for (Category item : categories) {
-                if (item.getParent() != null && item.getParent().getId() == categoryAndSub.getCategory().getId()) {
-                    categoryAndSub.setSubCategories(item);
-                }
-            }
+            // Copying categories to be processed
+            List<Category> temporaryCategories = new ArrayList<>(restCategories);
 
-            categoryAndSubCategoriesList.add(categoryAndSub);
+            // Associating each item with its parent if the parent is already associated
+            temporaryCategories.stream()
+                    .filter(category -> searchAndUpdateSubCategory(categoryAndSubCategoriesList, category) != null)
+                    .forEach(category -> restCategories.remove(category));
 
         }
 
         return categoryAndSubCategoriesList;
+    }
+
+    private Category searchAndUpdateSubCategory(List<CategoryAndSubCategory> categoryAndSubCategoriesList,
+            Category toBeCheckedCategory) {
+
+        for (CategoryAndSubCategory item : categoryAndSubCategoriesList) {
+            if (item.getCategory().getId() == toBeCheckedCategory.getParent().getId()) {
+                CategoryAndSubCategory newItem = new CategoryAndSubCategory();
+                newItem.setCategory(toBeCheckedCategory);
+                item.setSubCategories(newItem);
+                return toBeCheckedCategory;
+            }
+            Category category = searchAndUpdateSubCategory(item.getSubCategories(), toBeCheckedCategory);
+            if (category != null)
+                return toBeCheckedCategory;
+        }
+
+        return null;
+
+    }
+
+    @Override
+    @Cacheable("subCategories")
+    public List<Category> getSubCategories(String id) throws NumberFormatException {
+
+        return categoryRepository.findAllWhereParentIdEquals(Long.parseLong(id));
+    }
+
+    @Override
+    @CacheEvict(value = { "categoriesWithSubCategories", "subCategories", "categories" }, allEntries = true)
+    public void deleteCategory(String id) {
+        categoryRepository.deleteById(Long.parseLong(id));
+    }
+
+    @Override
+    @CacheEvict(value = { "categoriesWithSubCategories", "subCategories", "categories" }, allEntries = true)
+    public void updateCategory(Category category, MultipartFile photo) {
+
+        try {
+            imageStorageService.store(photo);
+
+            Resource photoResource = imageStorageService
+                    .loadAsResource(StringUtils.cleanPath(photo.getOriginalFilename()));
+
+            String photoURI = photoResource.getURI().toString();
+
+            category.setPhoto(photoURI);
+
+            System.out.println(photoURI);
+
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+
+        categoryRepository.save(category);
+
+    }
+
+    @Override
+
+    public List<Category> getParentCategories() {
+
+        return categoryRepository.findAllWhereParentIdIsNull();
     }
 
 }

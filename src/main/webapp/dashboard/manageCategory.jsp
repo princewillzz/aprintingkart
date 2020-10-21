@@ -93,22 +93,27 @@ top: -20px;"><button class="btn btn-default btn-xs btn-filter"><span class="glyp
                       
                         
                         <c:forEach items="${categories}" var="category">
-                            <tr>
+                            <tr id="row${category.id}">
+                            <form id="${category.id}">
+                                <input type="text" class="parentId" value="${category.parent.id}">
                                 <td id="categoryId">${category.id}</td>
                                 <td id="categoryName">${category.name}</td>
 
-                                <td><a type="button" href="" id="linkSubCategory"  data-toggle="modal" data-target="#categoryViewDetails" onclick="viewSubCategoryList('${category.id}')">View Sub Category</a></td>
+                                <td>${category.parent.name}</td>
                                 <td id="categoryDescription">${category.content}</td>
                                 <td id="categoryPhoto"><img src="images/icon.png" style="height: 100px;width: 100px;">
                                     <div class="file btn  btn-file category-image" style="overflow: hidden;position: relative;background-color: #09024B;color: white;display:none;">
                                         Edit Image
-                                        <input type="file" id="" name="" style="position: absolute;font-size: 50px;opacity: 0;right: 0;top: 0;">
+                                        
+                                            <input type="file" id="categoryPhoto${category.id}" name="category_photo" value="${category.photo}" style="position: absolute;font-size: 50px;opacity: 0;right: 0;top: 0;">
+                                        
+                                        
                                     </div>
                                 </td>
 
-                                <td class=""> <a href="#" class="btn btn-success saveCategory " style="display: none;" onclick="saveCategoryFunction(1)">Save</a><button class="btn btn-warning editCategory">Edit</button></td>
-                                <td><a class="btn btn-danger deleteCategory">Delete</a></td>
-
+                                <td class=""> <button type="submit" class="btn btn-success saveCategory " style="display: none;">Save</button><a class="btn btn-warning editCategory">Edit</button></td>
+                                <td><a class="btn btn-danger deleteCategory" onclick="deleteCategoryFunction('${category.id}')">Delete</a></td>
+                            </form>
                             </tr>
                         </c:forEach>
                     </tbody>
@@ -173,40 +178,39 @@ top: -20px;"><button class="btn btn-default btn-xs btn-filter"><span class="glyp
     <script type="text/javascript">
 
 
-        // Delete Branch
-        $('.table tbody tr td').on('click', '.deleteCategory', function () {
-            $(this).parent().parent().remove();
-            event.preventDefault();
-            const content = $(this).parent().prevAll().toArray();
-            const data = {};
-            content.forEach(item => {
-                if (item.id === "categoryId") {
-                    data["id"] = item.innerText;
-                }
-                if (item.id === "categoryName") {
-                    data["name"] = item.innerText;
-                }
-            })
+        function deleteCategoryFunction(id) {
 
-            console.log(JSON.stringify(data));
-            var token = $("meta[name='_csrf']").attr("content");
-            var header = $("meta[name='_csrf_header']").attr("content");
+            if(confirm("Are you sure to delete? ")) {
+                console.log("Not here");
+                var idName = "row" + id;
+                $("#row"+id).remove();
 
-            var xhr = new XMLHttpRequest();
-            var url = 'http://localhost:8080/api/product/post';
-            xhr.open("POST", url, true);
-            xhr.setRequestHeader('Content-type', 'application/json');
-            xhr.setRequestHeader(header, token);
+                var URI = "http://localhost:8080/api/category/" + id;
 
-            xhr.onreadystatechange = function () { // Call a function when the state changes.
-                if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-                    // console.log(typeof (JSON.parse(this.response)));
-                    console.log(JSON.parse(this.response)["name"]);
-                }
+                fetch(URI, {
+                    method: 'DELETE',
+                })
+                .then(response => response.json()) 
+                .then(data => {
+                    console.log(data);
+                });
+            } else {
+                
             }
-            xhr.send(JSON.stringify(data))
 
-        })
+            event.preventDefault();
+
+            
+
+        }
+
+
+        // // Delete Branch
+        // $('.table tbody tr td').on('click', '.deleteCategory', function () {
+        //     $(this).parent().parent().remove();
+        //     event.preventDefault();
+
+        // })
 
 
 
@@ -281,7 +285,7 @@ top: -20px;"><button class="btn btn-default btn-xs btn-filter"><span class="glyp
             console.log(id);
 
             const URI = "http://localhost:8080/api/sub-categories/" + id;
-            fetch(URL)
+            fetch(URI)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -290,12 +294,49 @@ top: -20px;"><button class="btn btn-default btn-xs btn-filter"><span class="glyp
         }
 
         //save Branch
-        function saveCategoryFunction(id) {
-            var categoryId = id;
-            var categoryName = $("table tbody tr td#categoryName").text();
-            console.log(categoryName);
+       
+        document.querySelectorAll('form').forEach(element => {
+            
+            element.addEventListener('submit', () => {
+                event.preventDefault();
+                    
+                console.log(element.id);
+                var id = element.id;
+                
+                var categoryId = $("#row" + id +" td#categoryId").text();
+                var categoryName = $("#row" + id +" td#categoryName").text();
+                var categoryDescription = $("#row" + id +" td#categoryDescription").text();
+                var categoryphoto = $("#row" + id +" td#categoryPhoto" + id);
+                var categoryParentId = document.querySelector("#row" + id + " .parentId");
 
-        }
+                console.log(categoryParentId);
+
+            
+                const formData = new FormData(element);
+
+                formData.append('id', categoryId);
+                formData.append('name', categoryName);
+                formData.append('content', categoryDescription);
+                formData.append('category_photo', categoryphoto);
+                formData.append('parent', categoryParentId);
+
+
+                fetch('http://localhost:8080/api/category', {
+                method: 'PUT',
+                enctype: 'multipart/form-data',
+                body: formData
+                })
+                .then(response => response.json())
+                .then(result => {
+                console.log('Success:', result);
+                })
+                .catch(error => {
+                console.error('Error:', error);
+                });
+
+            
+            })
+        })
 
 
 

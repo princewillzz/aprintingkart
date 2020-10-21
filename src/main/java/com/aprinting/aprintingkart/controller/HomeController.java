@@ -27,7 +27,7 @@ public class HomeController {
     public ModelAndView home(@RequestParam(defaultValue = "apk_home", name = "name") String name) {
         ModelAndView mv = new ModelAndView(name);
 
-        List<Category> categories = categoryService.getCategories();
+        List<Category> categories = categoryService.getParentCategories();
 
         mv.addObject("categories", categories);
 

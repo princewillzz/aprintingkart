@@ -54,7 +54,7 @@
 							</span>
 						</a>
 						<ul class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
-							<li class="slicknav_collapsed slicknav_parent slicknav_parent1">
+							<!-- <li class="slicknav_collapsed slicknav_parent slicknav_parent1">
 								<a href="#" role="menuitem" aria-haspopup="true" tabindex="-1"
 									class="slicknav_item slicknav_row" style="outline: none;">
 									<a href="#" tabindex="-1">Phone Cover
@@ -74,8 +74,8 @@
 									<li><a href="#" role="menuitem" tabindex="-1">Asus</a></li>
 									<li><a href="#" role="menuitem" tabindex="-1">&gt; View All Brands</a></li>
 								</ul>
-							</li>
-							<li class="slicknav_collapsed slicknav_parent slicknav_parent2"><a href="#" role="menuitem"
+							</li> -->
+							<!-- <li class="slicknav_collapsed slicknav_parent slicknav_parent2"><a href="#" role="menuitem"
 									aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row"
 									style="outline: none;"><a href="#" tabindex="-1">Clothing <i
 											class="fa fa-angle-down"></i></a>
@@ -176,9 +176,15 @@
 									<li><a href="#" role="menuitem" tabindex="-1">Wedding</a></li>
 									<li><a href="#" role="menuitem" tabindex="-1">Greeting Cards</a></li>
 								</ul>
-							</li>
-							<li><a href="#" role="menuitem" tabindex="-1">Face Masks</a></li>
-							<li><a href="#" role="menuitem" tabindex="-1">Bulk Requirement?</a></li>
+							</li> -->
+							<!-- <li><a href="#" role="menuitem" tabindex="-1"></a></li> -->
+
+
+							<c:forEach begin="0" end="9" varStatus="loop" items="${categories}" var="category">
+								<li><a href="#" role="menuitem" tabindex="-1">${category.name}</a></li>
+							</c:forEach>
+
+
 						</ul>
 					</div>
 				</div>
@@ -191,7 +197,7 @@
 
 			<!-- menu -->
 			<ul class="main-menu">
-				<li><a href="#">Phone Cover <i class="fa fa-angle-down"></i></a>
+				<!-- <li><a href="#">Phone Cover <i class="fa fa-angle-down"></i></a>
 					<ul class="sub-menu">
 						<li><a href="#">DESIGN YOUR CASE</a></li>
 						<li><a href="#">Xiaomi</a></li>
@@ -282,8 +288,12 @@
 						<li><a href="#">Greeting Cards</a></li>
 					</ul>
 				</li>
-				<li><a href="#">Face Masks</a></li>
-				<li><a href="#">Bulk Requirement?</a></li>
+				<li><a href="#">Face Masks</a></li> -->
+
+
+				<c:forEach begin="0" end="9" varStatus="loop" items="${categories}" var="category">
+					<li><a href="#">${category.name}</a></li>
+				</c:forEach>
 			</ul>
 		</div>
 	</nav>
