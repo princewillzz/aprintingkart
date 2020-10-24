@@ -10,6 +10,11 @@ public interface ProductService {
 
     void addProduct(Product product, MultipartFile photo);
 
+    /**
+     * 
+     * @param id Category it is associated with
+     * @return All the product belonging to that category
+     */
     List<Product> getProducts(String id);
 
 }

@@ -8,7 +8,7 @@ public interface OrderService {
 
     List<OrderDetail> getDeliveredOrders();
 
-    List<OrderDetail> getAllOrders();
+    List<OrderDetail> getAllOrders(int pageIndex);
 
     OrderDetail getOrderDetail(Long id);
 

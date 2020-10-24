@@ -8,6 +8,8 @@ import com.aprinting.aprintingkart.service.OrderService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -23,14 +25,17 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderDetail> getDeliveredOrders() {
-        // TODO Auto-generated method stub
-        return null;
+
+        return orderRepository.findByDeliveryDateNotNull();
     }
 
     @Override
-    public List<OrderDetail> getAllOrders() {
+    public List<OrderDetail> getAllOrders(final int pageIndex) {
+        int BATCHSIZE = 20;
 
-        return null;
+        Pageable pageable = PageRequest.of(pageIndex, BATCHSIZE);
+
+        return orderRepository.findAllOrderByCreatedAtDesc(pageable);
     }
 
     @Override
