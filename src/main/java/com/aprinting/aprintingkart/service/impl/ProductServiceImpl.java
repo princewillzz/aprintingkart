@@ -1,6 +1,7 @@
 package com.aprinting.aprintingkart.service.impl;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import com.aprinting.aprintingkart.Exceptions.DuplicateFileException;
 import com.aprinting.aprintingkart.models.Product;
@@ -71,6 +72,11 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getProducts(String id) {
 
         return productRepository.findByCategory(CategoryService.getCategory(id));
+    }
+
+    @Override
+    public Product getProduct(final Long id) {
+        return productRepository.findById(id).orElseThrow(() -> new NoSuchElementException());
     }
 
 }

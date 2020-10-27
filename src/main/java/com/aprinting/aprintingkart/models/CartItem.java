@@ -23,6 +23,9 @@ public class CartItem {
     @Column(columnDefinition = "int default 1")
     private Integer quantity;
 
+    private Double price;
+    private Double discount;
+
     public Long getId() {
         return id;
     }
@@ -55,10 +58,25 @@ public class CartItem {
         this.quantity = quantity;
     }
 
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Double discount) {
+        this.discount = discount;
+    }
+
     @Override
     public String toString() {
-        return "CartItem [customer=" + customer + ", id=" + id + ", product=" + product + ", quantity=" + quantity
-                + "]";
+        return "CartItem [discount=" + discount + ", id=" + id + ", price=" + price + ", quantity=" + quantity + "]";
     }
 
 }

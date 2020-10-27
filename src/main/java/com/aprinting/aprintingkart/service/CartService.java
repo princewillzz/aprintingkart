@@ -1,9 +1,12 @@
 package com.aprinting.aprintingkart.service;
 
+import java.util.Hashtable;
 import java.util.List;
 
 import com.aprinting.aprintingkart.models.CartItem;
 import com.aprinting.aprintingkart.models.Customer;
+
+import org.springframework.http.HttpStatus;
 
 public interface CartService {
 
@@ -16,6 +19,6 @@ public interface CartService {
      */
     List<CartItem> getCartItems(String id);
 
-    void add(CartItem cartItem, Customer customer);
+    HttpStatus addToCart(Hashtable<String, String> model, Customer customer);
 
 }

@@ -1,6 +1,7 @@
 package com.aprinting.aprintingkart.service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import com.aprinting.aprintingkart.models.Product;
 
@@ -16,5 +17,7 @@ public interface ProductService {
      * @return All the product belonging to that category
      */
     List<Product> getProducts(String id);
+
+    Product getProduct(final Long id);
 
 }

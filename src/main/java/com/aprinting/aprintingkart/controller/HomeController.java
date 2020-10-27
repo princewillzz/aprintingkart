@@ -2,7 +2,6 @@ package com.aprinting.aprintingkart.controller;
 
 import java.util.List;
 
-import com.aprinting.aprintingkart.models.Category;
 import com.aprinting.aprintingkart.service.CategoryService;
 import com.aprinting.aprintingkart.utilies.CategoryAndSubCategory;
 
