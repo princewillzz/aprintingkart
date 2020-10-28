@@ -1,7 +1,6 @@
 package com.aprinting.aprintingkart.controller;
 
 import com.aprinting.aprintingkart.Forms.AdminProfileForm;
-import com.aprinting.aprintingkart.models.Admin;
 import com.aprinting.aprintingkart.service.AdminService;
 import com.aprinting.aprintingkart.service.storage.StorageService;
 

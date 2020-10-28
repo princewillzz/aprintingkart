@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -25,6 +26,7 @@ public class Category {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Category parent;
 
+    @NotBlank(message = "Provide a name")
     private String name;
 
     @Column(columnDefinition = "text")

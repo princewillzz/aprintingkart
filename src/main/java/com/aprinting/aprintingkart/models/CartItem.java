@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class CartItem {
@@ -15,12 +16,15 @@ public class CartItem {
     private Long id;
 
     @ManyToOne
+    @NotNull(message = "Provide a valid product")
     private Product product;
 
     @ManyToOne
+    @NotNull(message = "You are not logged in")
     private Customer customer;
 
     @Column(columnDefinition = "int default 1")
+    @NotNull(message = "Please provide some quantity")
     private Integer quantity;
 
     private Double price;

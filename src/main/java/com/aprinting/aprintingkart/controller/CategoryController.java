@@ -2,6 +2,8 @@ package com.aprinting.aprintingkart.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.aprinting.aprintingkart.Exceptions.DuplicateFileException;
 import com.aprinting.aprintingkart.models.Category;
 import com.aprinting.aprintingkart.service.CategoryService;
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -100,10 +103,18 @@ public class CategoryController {
 
     // Add new Category
     @PostMapping(value = "dashboard/add-category")
-    public RedirectView addNewCategory(@ModelAttribute Category category,
+    public RedirectView addNewCategory(@ModelAttribute @Valid Category category, final BindingResult bindingResult,
             @RequestParam("category_photo") MultipartFile photo, final RedirectAttributes redirectAttributes) {
 
+        final RedirectView redirectView = new RedirectView("/dashboard/add-category");
+
         try {
+
+            if (bindingResult.hasErrors()) {
+                System.out.println("Invalid Form data");
+                redirectAttributes.addAttribute("error", bindingResult.getFieldError().getDefaultMessage());
+                return redirectView;
+            }
 
             categoryService.addCategories(category, photo);
             System.out.println("added a new Category");
@@ -115,7 +126,7 @@ public class CategoryController {
             System.out.println("Unable to add a new Category");
         }
 
-        return new RedirectView("/dashboard/add-category");
+        return redirectView;
     }
 
 }

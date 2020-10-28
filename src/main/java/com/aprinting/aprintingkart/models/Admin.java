@@ -6,6 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "admin", uniqueConstraints = { @UniqueConstraint(columnNames = { "email" }) })
@@ -14,10 +17,18 @@ public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
+    @NotBlank(message = "email is not provided")
+    @Email(message = "Please provide a valid email")
     private String email;
+
+    @NotBlank
+    @Size(min = 8, message = "Please Provide a better password")
     private String password;
     private String profile_pic;
+
     private String phone;
 
     public Long getId() {

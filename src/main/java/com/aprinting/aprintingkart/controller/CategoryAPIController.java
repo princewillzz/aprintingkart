@@ -3,6 +3,8 @@ package com.aprinting.aprintingkart.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.aprinting.aprintingkart.models.Category;
 import com.aprinting.aprintingkart.service.CategoryService;
 import com.aprinting.aprintingkart.service.ProductService;
@@ -10,6 +12,7 @@ import com.aprinting.aprintingkart.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -69,8 +72,13 @@ public class CategoryAPIController {
     }
 
     @PutMapping(value = "category")
-    public ResponseEntity<Object> updateCategory(@ModelAttribute Category category,
-            @RequestParam("category_photo") MultipartFile photo) {
+    public ResponseEntity<Object> updateCategory(@ModelAttribute @Valid Category category,
+            final BindingResult bindingResult, @RequestParam("category_photo") MultipartFile photo) {
+
+        if (bindingResult.hasErrors()) {
+            Error error = new Error(bindingResult.getFieldError().getDefaultMessage());
+            return ResponseEntity.badRequest().body(error);
+        }
 
         System.out.println(category);
         System.out.println(photo.getOriginalFilename());

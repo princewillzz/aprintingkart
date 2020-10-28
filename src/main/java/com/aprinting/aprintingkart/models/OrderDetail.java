@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class OrderDetail {
@@ -21,16 +22,22 @@ public class OrderDetail {
     private Timestamp createdAt;
 
     private Date deliveryDate;
+
     private Boolean paymentStatus;
+
+    @NotNull(message = "Amount of the product is missing")
     private Double amount;
     private Double discount;
 
     @ManyToOne
+    @NotNull(message = "Product is missing")
     private Product product;
 
+    @NotNull(message = "Please specify the quantity")
     private Integer quantity;
 
     @ManyToOne
+    @NotNull(message = "Customer is invalid")
     private Customer customer;
 
     public Long getId() {
