@@ -41,7 +41,7 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public List<CartItem> getCartItems(final String id) {
-        return cartItemRepository.findByCustomer(customerService.getDetail(id));
+        return cartItemRepository.findByCustomer(customerService.getDetail(Long.parseLong(id)));
     }
 
     @Override

@@ -31,7 +31,7 @@
 								<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 								<span>0</span>
 							</div>
-							<a href="shopping-cart">Shopping Cart</a>
+							<a href="/user/shopping-cart">Shopping Cart</a>
 						</div>
 					</div>
 				</div>

@@ -11,14 +11,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
-@JsonIgnoreProperties(value = { "address" })
+@Table(name = "customer", uniqueConstraints = { @UniqueConstraint(columnNames = "email") })
+@JsonIgnoreProperties(value = { "address" }, ignoreUnknown = true)
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,12 +32,15 @@ public class Customer {
     @NotNull
     @Email(message = "Provide a valid email address")
     private String email;
+
     private String contactNo;
 
     @Column(columnDefinition = "boolean default true")
-    private Boolean active;
+    private Boolean active = true;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @NotNull(message = "password cannot be empty")
+    @Size(min = 3, message = "password is too short")
     private String password;
 
     @Column(columnDefinition = "float default 0.0")

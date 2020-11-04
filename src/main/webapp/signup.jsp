@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Printig Kart</title>
   <meta charset="utf-8">
@@ -8,43 +9,39 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
- 
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
- 
-<link rel="stylesheet" type="text/css" href="css/mediaquery.css">
-<link rel="stylesheet" type="text/css" href="css/sign_in_up.css">
-<link rel="stylesheet" type="text/css" href="css/sign_in_up_poster.css">
+
+  <link rel="stylesheet" type="text/css" href="css/mediaquery.css">
+  <link rel="stylesheet" type="text/css" href="css/sign_in_up.css">
+  <link rel="stylesheet" type="text/css" href="css/sign_in_up_poster.css">
 
 
 
- <style type="text/css">
-
-
-
-#primary .forgot-password
-{
-  color: #8F8E8D;
-  font-size: 14px;
-  letter-spacing: 1px;
-}
-
-
- </style>
+  <style type="text/css">
+    #primary .forgot-password {
+      color: #8F8E8D;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+  </style>
 </head>
+
 <body>
 
- 
+
 
   <div class="container login1 otp">
 
     <div class="row">
 
-      
-      <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-6 ncol-xl-6 otp-poster" style="clip-path: polygon(0 0, 91% 0, 100% 100%, 0% 100%);border-radius: 0px 0px 130px 0px;">
-        <table class="company-title-table" style="vertical-align: middle;"> 
+
+      <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-6 ncol-xl-6 otp-poster"
+        style="clip-path: polygon(0 0, 91% 0, 100% 100%, 0% 100%);border-radius: 0px 0px 130px 0px;">
+        <table class="company-title-table" style="vertical-align: middle;">
           <tr>
             <th>Sign</th>
             <th>&nbsp;Up</th>
@@ -57,92 +54,97 @@
           </tr>
         </table>
       </div>
-      <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 login-page" >
+      <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 login-page">
 
-          <div class="container " style="margin-top: 20px;">
-
-
-     
-        <div class="panel-body login">
-            <form action="" class="form-horizontal" id="validate">
-             
-                  
-                      <center><i class="fa fa-user-o u" aria-hidden="true"></i></center>
-                        <div class="form-group ">
-                            <div class=" col-12 col-md-8 container">
-                                <input type="text" name="name" class="form-control  " placeholder="name" style="width: 48%;float: left;"required>
-                                 <input type="text" name="name" class="form-control  " placeholder="name"style="width: 48%;float: left;margin-left: 5px;" required>
-                            </div>
-                         </div>
-
-                     	 <div class="form-group"  style="margin-top: 55px;" >
-                            <div class=" col-12 col-md-8 container">
-                                <input type="email" name="email" class="form-control " placeholder="Enter E-mail"required  />
-                            </div>
-                        </div>
-                       
-                        <div class="form-group">
-                            <div class=" col-12 col-md-8 container">
-                                <input type="text" maxLength="10" size="1" min="0" max="9" pattern="[0-9]{1}"  class="form-control mobile " placeholder="Enter Mobile Number" required/>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class=" col-12 col-md-8 container input-group">
-                                <input type="password"  id="password-field" class="form-control" placeholder="       Enter Password" required/>
-                               <div class="input-group-append" >
-                      				<span class="input-group-text" style="border: none;border-radius: 0px 20px 20px 0px;background-color: #F7E45C;">
-                       				 <i class="fa fa-fw fa-eye field-icon toggle-password" toggle="#password-field" style="background-color: #F7E45C;"></i>
-                     				 </span>
-                   				</div>
-                 			 </div>
+        <div class="container " style="margin-top: 20px;">
 
 
-                        </div>
-                       
-                       
-                       <div class="form-group">
-                            <div class=" col-12 col-md-8 container">
-                                <input type="password"   class="form-control" placeholder="Confirm Password" required/>
 
-                            </div>
-                        </div>
+          <div class="panel-body login">
+            <form action="register-customer" method="POST" class="form-horizontal" id="validate">
 
-                        <center>
-                        <button type="submit" class="btn btn-default login-button">Sign up & Verify</button><br>
-                   </center>
-                    </form> 
-                    </div>
-           
-         
+
+              <center><i class="fa fa-user-o u" aria-hidden="true"></i></center>
+              <div class="form-group " style="margin-top: 55px;">
+                <div class=" col-12 col-md-8 container">
+                  <input type="text" name="name" class="form-control " placeholder="Enter Your Name" required />
+                </div>
+              </div>
+
+              <div class="form-group" style="">
+                <div class=" col-12 col-md-8 container">
+                  <input type="email" name="email" class="form-control " placeholder="Enter E-mail" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class=" col-12 col-md-8 container">
+                  <input name="contactNo" type="text" maxLength="10" class="form-control mobile "
+                    placeholder="Enter Mobile Number" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class=" col-12 col-md-8 container input-group">
+                  <input name="password" type="password" id="password-field" class="form-control"
+                    placeholder="       Enter Password" required />
+                  <div class="input-group-append">
+                    <span class="input-group-text"
+                      style="border: none;border-radius: 0px 20px 20px 0px;background-color: #F7E45C;">
+                      <i class="fa fa-fw fa-eye field-icon toggle-password" toggle="#password-field"
+                        style="background-color: #F7E45C;"></i>
+                    </span>
+                  </div>
+                </div>
+
+
+              </div>
+
+
+              <div class="form-group">
+                <div class=" col-12 col-md-8 container">
+                  <input name="confirmPassword" type="password" class="form-control" placeholder="Confirm Password"
+                    required />
+
+                </div>
+              </div>
+
+              <center>
+                <button type="submit" class="btn btn-default login-button">Sign up & Verify</button><br>
+              </center>
+            </form>
+          </div>
+
+
         </div>
+      </div>
+
     </div>
 
-</div>
 
-    
-        </div>
-      
- 
+  </div>
+
+
 
   <!--footer-->
-  
-
-<!--End Footer-->
 
 
-<script type="text/javascript">
-  $(".toggle-password").click(function() {
+  <!--End Footer-->
 
-  $(this).toggleClass("fa-eye fa-eye-slash");
-  var input = $($(this).attr("toggle"));
-  if (input.attr("type") == "password") {
-    input.attr("type", "text");
-  } else {
-    input.attr("type", "password");
-  }
-});
-</script>
+
+  <script type="text/javascript">
+    $(".toggle-password").click(function () {
+
+      $(this).toggleClass("fa-eye fa-eye-slash");
+      var input = $($(this).attr("toggle"));
+      if (input.attr("type") == "password") {
+        input.attr("type", "text");
+      } else {
+        input.attr("type", "password");
+      }
+    });
+  </script>
 
 </body>
+
 </html>

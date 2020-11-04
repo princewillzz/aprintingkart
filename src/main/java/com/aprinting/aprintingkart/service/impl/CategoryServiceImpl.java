@@ -69,6 +69,8 @@ public class CategoryServiceImpl implements CategoryService {
 
             category.setPhoto(photoURI);
 
+            System.out.println(photoResource.getURI());
+
             System.out.println(photoURI);
 
         } catch (Exception e) {
