@@ -1,6 +1,5 @@
 package com.aprinting.aprintingkart.controller;
 
-import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,15 +42,6 @@ public class HomeController {
         mv.addObject("categoriesWithSubCategories", categories);
 
         return mv;
-    }
-
-    @GetMapping(value = "foo/hello")
-    @ResponseBody
-    public String name(Principal request) {
-
-        System.out.println(request.getName());
-
-        return "Hello ";
     }
 
     @GetMapping(value = "foo")
