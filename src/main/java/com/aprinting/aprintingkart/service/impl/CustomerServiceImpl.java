@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import com.aprinting.aprintingkart.models.Customer;
+import com.aprinting.aprintingkart.models.UserVerificationEntity;
 import com.aprinting.aprintingkart.principals.CustomerPrincipal;
 import com.aprinting.aprintingkart.repository.CustomerRepository;
+import com.aprinting.aprintingkart.repository.UserVerificationEntityRepository;
 import com.aprinting.aprintingkart.service.CustomerService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +24,13 @@ public class CustomerServiceImpl implements CustomerService, UserDetailsService 
 
     private final CustomerRepository customerRepository;
     private final PasswordEncoder passwordEncoder;
+    private final UserVerificationEntityRepository userVerificationEntityRepository;
 
     @Autowired
-    protected CustomerServiceImpl(final CustomerRepository customerRepository, final PasswordEncoder passwordEncoder) {
+    protected CustomerServiceImpl(final CustomerRepository customerRepository, final PasswordEncoder passwordEncoder,
+            final UserVerificationEntityRepository userVerificationEntityRepository) {
         this.customerRepository = customerRepository;
+        this.userVerificationEntityRepository = userVerificationEntityRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -77,6 +82,18 @@ public class CustomerServiceImpl implements CustomerService, UserDetailsService 
         customerRepository.save(newCustomer);
 
         return newCustomer;
+    }
+
+    @Override
+    public boolean verifyResetPasswordCode(String email, String code) {
+
+        UserVerificationEntity verificationEntity = userVerificationEntityRepository.findByUsernameAndCode(email, code);
+        System.out.println(verificationEntity);
+        if (verificationEntity != null) {
+            return true;
+        }
+
+        return false;
     }
 
 }

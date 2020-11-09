@@ -53,13 +53,13 @@ public class UserController {
     }
 
     @PostMapping(value = "verify-reset-code")
-    public ModelAndView verifyCodeAndResetPasswordView(@RequestParam String email,
+    public ModelAndView verifyCodeAndResetPasswordView(@RequestParam(name = "email") String username,
             @RequestParam String verificationCode) {
 
         ModelAndView modelAndView = new ModelAndView("reset_password");
         // verify email
-        System.out.println(email + " " + verificationCode);
-        if (verificationCode.length() < 2) {
+        System.out.println(username + " " + verificationCode);
+        if (!customerService.verifyResetPasswordCode(username, verificationCode)) {
             modelAndView.setViewName("redirect:/forgot-password?error=true");
             return modelAndView;
         }
@@ -72,8 +72,6 @@ public class UserController {
     @PostMapping(value = "reset-password")
     public String resetPassword(@ModelAttribute @Valid Customer customer, final BindingResult bindingResult,
             @RequestParam String rePassword, @RequestParam String verificationCode, final HttpServletRequest request) {
-
-        // Reset Password for the particular email and password
 
         request.setAttribute("verificationCode", verificationCode);
 

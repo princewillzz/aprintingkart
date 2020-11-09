@@ -14,4 +14,6 @@ public interface CustomerService {
 
     Customer resetPassword(Customer customer);
 
+    boolean verifyResetPasswordCode(String email, String code);
+
 }
