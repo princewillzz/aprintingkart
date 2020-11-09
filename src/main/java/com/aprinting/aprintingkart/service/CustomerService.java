@@ -12,4 +12,6 @@ public interface CustomerService {
 
     Customer addNewCustomer(final Customer customer);
 
+    Customer resetPassword(Customer customer);
+
 }

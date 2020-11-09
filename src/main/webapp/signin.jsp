@@ -104,18 +104,29 @@
 
               <div class="radio col-md-8 container">
                 <label style="color: rgba(0,0,0,.5);"><input type="radio" name="optradio"
-                    style="margin-right: 10px;background-color: gray;" checked>Remember Me<input type="radio"
-                    name="optradio" style="margin-left: 60px;margin-right: 10px">Forgot Me</label>
+                    style="margin-right: 10px;background-color: gray;" checked>Remember Me
               </div>
 
 
               <button type="submit" class="btn btn-default login-button">Login</button><br>
-              <div class="dont-have-acc col-md-8 container">
-                <a href="#">Dont have an account ?</a><button type="submit" class="btn btn-default signup">Create An
-                  Account</button><br>
-              </div>
+
 
             </form>
+
+            <div class="dont-have-acc col-md-8 container">
+              <a href="forgot-password" style="color: rgb(94, 73, 208);">forgot password</a>
+            </div>
+
+            <div class="dont-have-acc col-md-8 container">
+              <p>
+                Dont have an account ?
+                <a href="register">
+                  <button type="submit" class="btn btn-default signup">Create An
+                    Account</button><br>
+                </a>
+              </p>
+
+            </div>
           </div>
 
 

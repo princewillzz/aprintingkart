@@ -1,5 +1,7 @@
 package com.aprinting.aprintingkart.controller;
 
+import java.util.NoSuchElementException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -26,6 +28,78 @@ public class UserController {
     @Autowired
     protected UserController(@Qualifier("customerService") final CustomerService customerService) {
         this.customerService = customerService;
+    }
+
+    @GetMapping(value = "forgot-password")
+    public ModelAndView userForgotPasswordView(@RequestParam(defaultValue = "") Boolean error) {
+        final ModelAndView modelAndView = new ModelAndView("forgot_password");
+
+        if (error != null && error == true) {
+            modelAndView.addObject("error", "wrong entries");
+            System.out.println("wrong code");
+        }
+
+        return modelAndView;
+    }
+
+    @PostMapping(value = "forgot-password")
+    public String getEmailOfUserAndSendEmailVerfication(@RequestParam String email) {
+        System.out.println(email);
+        // Send email
+        // Call a service to send an email to the customer if his email already exists
+        // in the database
+
+        return "redirect:/forgot-password";
+    }
+
+    @PostMapping(value = "verify-reset-code")
+    public ModelAndView verifyCodeAndResetPasswordView(@RequestParam String email,
+            @RequestParam String verificationCode) {
+
+        ModelAndView modelAndView = new ModelAndView("reset_password");
+        // verify email
+        System.out.println(email + " " + verificationCode);
+        if (verificationCode.length() < 2) {
+            modelAndView.setViewName("redirect:/forgot-password?error=true");
+            return modelAndView;
+        }
+
+        modelAndView.addObject("verificationCode", verificationCode);
+
+        return modelAndView;
+    }
+
+    @PostMapping(value = "reset-password")
+    public String resetPassword(@ModelAttribute @Valid Customer customer, final BindingResult bindingResult,
+            @RequestParam String rePassword, @RequestParam String verificationCode, final HttpServletRequest request) {
+
+        // Reset Password for the particular email and password
+
+        request.setAttribute("verificationCode", verificationCode);
+
+        if (bindingResult.hasErrors()) {
+            System.out.println("validation error");
+            request.setAttribute("error", bindingResult.getFieldError().getDefaultMessage());
+            return "reset_password";
+        }
+
+        System.out.println(
+                customer.getEmail() + " " + customer.getPassword() + " " + rePassword + " " + verificationCode);
+
+        if (!customer.getPassword().equals(rePassword)) {
+            return "reset_password";
+        }
+
+        try {
+            final Customer newCustomer = customerService.resetPassword(customer);
+            System.out.println(newCustomer);
+        } catch (NoSuchElementException e) {
+            return "reset_password";
+        } catch (Exception e) {
+            return "reset_password";
+        }
+
+        return "redirect:/signin";
     }
 
     @GetMapping(value = "signin")

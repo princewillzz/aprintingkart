@@ -76,10 +76,10 @@ public class SecurityConfig {
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-            http.antMatcher("/dashboard/**").authorizeRequests().anyRequest().hasAnyRole("ADMIN").and().formLogin()
-                    .loginPage("/admin-signin").loginProcessingUrl("/dashboard/login-admin")
-                    .failureUrl("/admin-signin?error=true").defaultSuccessUrl("/dashboard", false).permitAll().and()
-                    .csrf().disable();
+            http.antMatcher("/dashboard/**").authorizeRequests().antMatchers("/css/**", "/js/**", "/images/**")
+                    .permitAll().anyRequest().hasAnyRole("ADMIN").and().formLogin().loginPage("/admin-signin")
+                    .loginProcessingUrl("/dashboard/login-admin").failureUrl("/admin-signin?error=true")
+                    .defaultSuccessUrl("/dashboard", false).permitAll().and().csrf().disable();
 
         }
 

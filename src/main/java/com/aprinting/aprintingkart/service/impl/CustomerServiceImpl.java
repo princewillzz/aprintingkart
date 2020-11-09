@@ -1,6 +1,7 @@
 package com.aprinting.aprintingkart.service.impl;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import com.aprinting.aprintingkart.models.Customer;
 import com.aprinting.aprintingkart.principals.CustomerPrincipal;
@@ -60,6 +61,22 @@ public class CustomerServiceImpl implements CustomerService, UserDetailsService 
 
         return customerRepository.save(customer);
 
+    }
+
+    @Override
+    public Customer resetPassword(final Customer customer) {
+
+        final Customer newCustomer = customerRepository.findByEmail(customer.getEmail());
+        if (newCustomer == null)
+            throw new NoSuchElementException("Username is incorrect");
+
+        // change password
+        newCustomer.setPassword(passwordEncoder.encode(customer.getPassword()));
+
+        // save to the database
+        customerRepository.save(newCustomer);
+
+        return newCustomer;
     }
 
 }
